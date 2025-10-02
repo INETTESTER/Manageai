@@ -3,18 +3,23 @@ import { sleep } from 'k6';
 import { error_check } from '../check/check.js';
 import { scenario } from 'k6/execution';
 
-import { ran } from '../api/script.js';
-import { callback_scb } from '../api/getJson.js';
+
+import { Get_projects } from '../api/Get_projects.js';
+import { Get_bots } from '../api/Get_bots.js';
+import { Get_all_session_bot } from '../api/Get_all_session_bot.js';
+import { Get_history } from '../api/Get_history.js';
 
 
 
 //============================================================================
 
 export default function () {    //เรียกใช้ API ใน export default function
-  response = ran()
-  //response = callback_scb(scenario)
+  response = Get_projects()
+  //response = Get_bots()
+  //response = Get_all_session_bot()
+  //response = Get_history()
 
-  
+
   error_check(response);
   sleep(1)
 }
